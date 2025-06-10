@@ -4,7 +4,7 @@ import com.dantespard4.loggingaop.annotations.LogExecutionTime;
 
 public class LogExecutionTimeTest {
 
-    @LogExecutionTime
+    @LogExecutionTime(logReturnValue = true)
     public void testMethod() throws InterruptedException {
         Thread.sleep(500);
     }
