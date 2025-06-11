@@ -21,17 +21,21 @@ public class LoggingAspect {
 
         String message = String.format("Method %s executed in %dms", joinPoint.getSignature(), executionTime);
 
+        if (logExecutionTime.logArgs()){
+            Object[] args = joinPoint.getArgs();
+            message += String.format(" | Args: %s", args.length > 0 ? java.util.Arrays.toString(args) : "No arguments");
+        }
+
         if (logExecutionTime.logReturnValue()) {
             message += String.format(" | Return: %s", proceed);
         }
 
-        switch (logExecutionTime.level().toUpperCase()) {
-            case "DEBUG" -> log.debug(message);
-            case "WARN" -> log.warn(message);
-            case "ERROR" -> log.error(message);
-            case "TRACE" -> log.trace(message);
-            case "INFO" -> log.info(message);
-            default -> log.info(message);
+        switch (logExecutionTime.level()) {
+            case DEBUG -> log.debug(message);
+            case WARN -> log.warn(message);
+            case ERROR -> log.error(message);
+            case TRACE -> log.trace(message);
+            case INFO -> log.info(message);
         }
 
         return proceed;
