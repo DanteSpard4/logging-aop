@@ -9,6 +9,7 @@ public class LogBuffer {
     public static void startBuffering() {
         logBuffer.get().setLength(0);
         logBuffer.get().append("\n");
+        logLevel.set(LogLevel.INFO);
     }
 
     public static void info(String message) {
