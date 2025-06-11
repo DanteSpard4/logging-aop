@@ -23,7 +23,7 @@ public class BufferedLogsAspect {
         try {
             return joinPoint.proceed();
         } catch (Exception e) {
-            LogBuffer.error("Excepción durante la ejecución del método",e);
+            LogBuffer.error("Exception during method execution",e);
             throw e;
         } finally {
             String bufferedOutput = LogBuffer.getAndClearBuffer();
