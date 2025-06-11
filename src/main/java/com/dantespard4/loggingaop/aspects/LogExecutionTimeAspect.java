@@ -9,9 +9,9 @@ import org.slf4j.LoggerFactory;
 
 
 @Aspect
-public class LoggingAspect {
+public class LogExecutionTimeAspect {
 
-    private static final Logger log = LoggerFactory.getLogger(LoggingAspect.class);
+    private static final Logger log = LoggerFactory.getLogger(LogExecutionTimeAspect.class);
 
     @Around("execution(@com.dantespard4.loggingaop.annotations.LogExecutionTime * *(..)) && @annotation(logExecutionTime)")
     public Object logExecutionTime(ProceedingJoinPoint joinPoint, LogExecutionTime logExecutionTime) throws Throwable {
