@@ -28,9 +28,34 @@ git clone https://github.com/DanteSpard4/logging-aop.git
 cd logging-aop
 ```
 
+### Compilation
+
+Compile and install the project to your local Maven repository:
+
+```bash
+mvn install
+```
+
+This command will build the project and install the generated library into your local Maven repository (typically located at `~/.m2/repository`).  
+You can then use this library as a dependency in other Maven projects on your machine.
+
+### Adding as a Dependency
+
+To use this library in another Maven project, add the following dependency to the `<dependencies>` section of your project's `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>com.dantespard4</groupId>
+    <artifactId>logging-aop</artifactId>
+    <version>1.0-SNAPSHOT</version>
+</dependency>
+```
+
+> **Note:** Make sure you have installed the library to your local Maven repository using `mvn install` in the `logging-aop` project before adding it as a dependency.
+
 ### Build Configuration
 
-Before compiling the project, you need to add the AspectJ Maven Plugin to your `pom.xml`. This plugin is necessary to perform compile-time weaving, which is required for the aspect-oriented logging to work.
+Before running your application, you must compile the project with the AspectJ Maven Plugin. This step is required so that aspect weaving is properly applied, which enables the logging functionality provided by this library.
 
 Add the following plugin configuration inside the `<plugins>` section of your `pom.xml`:
 
@@ -70,7 +95,7 @@ Add the following plugin configuration inside the `<plugins>` section of your `p
 </plugin>
 ```
 
-> **Note:** It is necessary to compile the project with this plugin to enable AspectJ weaving.
+> **Note:** You must compile the project with this plugin before running your application, otherwise the aspects for logging will not be applied.
 
 ### SLF4J Backend Requirement
 
@@ -83,14 +108,6 @@ Example (for Logback):
     <artifactId>logback-classic</artifactId>
     <version>1.5.6</version>
 </dependency>
-```
-
-### Compilation
-
-Compile the project using Maven:
-
-```bash
-mvn install
 ```
 
 ### Usage
