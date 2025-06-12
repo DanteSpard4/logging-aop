@@ -129,7 +129,7 @@ public class ExampleService {
     }
 }
 ```
-The logging aspect in this library will automatically log method entry and exit, and, con la anotación `@LogExecutionTime`, también se registrará el tiempo de ejecución del método process.
+The logging aspect in this library will automatically log method entry and exit, and, con la anotación `@LogExecutionTime`.
 
 ## Structure
 
